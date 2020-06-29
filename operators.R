@@ -21,7 +21,8 @@
 `%::%` <- function(x, f) {
     Map(
         function(x) { list(x, f(x)) },
-        x)
+        x
+    )
 }
 
 ## pipe filter
@@ -33,5 +34,9 @@
 ## pipe assertion
 
 `%!%` <- function(x, f) {
-    ifelse(f(x), x, warning(stop(paste("Condition false:", x))))
+    ifelse(
+        f(x),
+        x,
+        warning(stop(paste("Condition false:", x)))
+    )
 }
