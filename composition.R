@@ -4,12 +4,16 @@ P <- function(f, args) {
         all.args <- formalArgs(f)
         first.arg <- all.args[!all.args %in% passed.args][[1]]
         all.args <- args
-        all.args[first.arg] <- x
+        all.args[[first.arg]] <- x
 
         do.call(f, all.args)
     }
 }
 
-integral <- function(a = -Inf, b = Inf, subdivisions = 1000, rel.tol = .Machine$double.eps^0.5, abs.tol = rel.tol) {
-    function(f) { integrate(f, a, b, subdivisions = subdivisions, rel.tol = rel.tol, abs.tol = abs.tol) }
+integral <- function(f, a = -Inf, b = Inf, subdivisions = 1000, rel.tol = .Machine$double.eps^0.5, abs.tol = rel.tol) {
+    integrate(f, a, b, subdivisions = subdivisions, rel.tol = rel.tol, abs.tol = abs.tol)
+}
+
+E <- function(p, a = -Inf, b = Inf, subdivisions = 1000, rel.tol = .Machine$double.eps^0.5, abs.tol = rel.tol) {
+    integrate(function(x) { x * p(x) }, a, b, subdivisions = subdivisions, rel.tol = rel.tol, abs.tol = abs.tol)
 }
