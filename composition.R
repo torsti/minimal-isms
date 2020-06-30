@@ -10,6 +10,6 @@ P <- function(f, args) {
     }
 }
 
-integral <- function(f, a = -Inf, b = Inf, subdivisions = 1000, rel.tol = .Machine$double.eps^0.5, abs.tol = rel.tol) {
+integral <- function(a = -Inf, b = Inf, subdivisions = 1000, rel.tol = .Machine$double.eps^0.5, abs.tol = rel.tol) {
     function(f) { integrate(f, a, b, subdivisions = subdivisions, rel.tol = rel.tol, abs.tol = abs.tol) }
 }
